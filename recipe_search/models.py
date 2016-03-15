@@ -39,3 +39,7 @@ class Variation(models.Model):
 class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe, verbose_name=u'Рецепт')
     variation = models.ForeignKey(Variation, verbose_name=u'Вариация')
+
+    class Meta:
+        verbose_name = u'Ингридиент в рецепте'
+        verbose_name_plural = u'Ингридиенты в рецепте'

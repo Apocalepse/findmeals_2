@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipe_search',
     'bootstrap3',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
