@@ -14,8 +14,6 @@ class SearchView(FormView):
     def form_valid(self, form):
         cd = form.cleaned_data
 
-        # recipes = Recipe.objects.prefetch_related('variations__ingredient').filter(title__icontains=cd['title'])
-
         recipes = Recipe.objects.prefetch_related(
             Prefetch('variations', queryset=Variation.objects.select_related('ingredient'))
         ).filter(title__icontains=cd['title'])
