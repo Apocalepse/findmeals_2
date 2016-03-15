@@ -1,0 +1,23 @@
+{% extends 'bootstrap.html' %}
+{% load i18n bootstrap3 %}
+
+{% block bootstrap3_content %}
+    <div class="container" style="margin-top: 20px">
+    <h1>Поиск по рецептам</h1>
+       <form role="form" method="post" action=".">
+        {% csrf_token %}
+        {% bootstrap_form_errors form type='non_fields' %}
+        {% bootstrap_form form %}
+        {% buttons submit='Поиск' %}{% endbuttons %}
+    </form>
+    {% if recipes %}
+    <h2>Результаты</h2>
+        {% for recipe in recipes %}
+            <h3>{{ recipe.title }}</h3>
+            {% for variation in recipe.variations.all %}
+                <p>{{ variation.ingredient.title }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
