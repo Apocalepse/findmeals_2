@@ -29,7 +29,7 @@ class Variation(models.Model):
     ingredient = models.ForeignKey(Ingredient, verbose_name=u'Ингридиент')
 
     def __unicode__(self):
-        return u'v%s, %s' % (self.pk, self.ingredient.title)
+        return u'%s' % self.ingredient.title
 
     class Meta:
         verbose_name = u'Вариация'

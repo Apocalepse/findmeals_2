@@ -25,9 +25,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipe_search',
+
     'bootstrap3',
-    'debug_toolbar',
+    'djng',
+    'rest_framework',
+
+    'recipe_search',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -106,7 +109,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/media/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = MEDIA_ROOT + '/static/'
