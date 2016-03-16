@@ -1,0 +1,7 @@
+Django==1.9.4
+Markdown==2.6.5
+django-angular==0.8.1
+django-bootstrap3==7.0.0
+django-debug-toolbar==1.4
+django-filter==0.13.0
+djangorestframework==3.3.3
