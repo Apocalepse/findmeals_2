@@ -9,4 +9,3 @@ class SearchForm(NgModelFormMixin, Bootstrap3Form):
     form_name = 'search_form'
 
     title = forms.CharField(label=u'Название')
-

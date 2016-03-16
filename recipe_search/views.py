@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-import json
-from django.views.generic import TemplateView
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.db.models.query import Prefetch
-from django.http import HttpResponseBadRequest, HttpResponse
+from django.http import HttpResponseBadRequest
 
 from rest_framework.response import Response
 
@@ -22,13 +20,10 @@ class SearchView(APIView):
         return render_to_response(self.template_name,  {'form': form}, context_instance=RequestContext(self.request))
 
     def post(self, request, *args, **kwargs):
-        # return json.dumps({'ok': 'ok'})
 
-        # if not request.is_ajax():
-        #     return HttpResponseBadRequest('Expected an XMLHttpRequest')
-        # post_data = json.dumps(request.POST)
+        if not request.is_ajax():
+            return HttpResponseBadRequest('Expected an XMLHttpRequest')
 
-        # in_data = json.loads(request.data)
         in_data = request.data
 
         bound_search_form = SearchForm(data={'title': in_data.get('title')})
@@ -43,18 +38,6 @@ class SearchView(APIView):
 
             serializer = RecipeSerializer(recipes, many=True)
 
-            # print serializer.data
-            #
             return Response(serializer.data)
-
-            # context = self.get_context_data()
-            # context['recipes'] = recipes
-            # context['form'] = bound_search_form
-
-            # return json.dumps(list(recipes))
-
-            # return render_to_response(self.template_name, context, context_instance=RequestContext(self.request))
         else:
             print request.body
-
-
